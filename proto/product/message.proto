@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package product;
+
+import "google/protobuf/wrappers.proto";
+
+option go_package = "github.com/sergejpm/product/pkg/product;product";
+
+message ProductInfoRequest {
+  string name = 1 [json_name = "name"];
+}
+
+message ProductInfoResponse {
+  string id = 1 [json_name = "id"];
+  string description = 2 [json_name = "description"];
+  string name = 3 [json_name = "name"];
+  string price = 4 [json_name = "price"];
+}
+
+message RegistrationRequest {
+  string username = 1 [json_name = "username"];
+  string password = 2 [json_name = "password"];
+}
+
+message RegistrationResponse {
+  bool success = 1 [json_name = "success"];
+}
+
+message AuthorizationRequest {
+  string username = 1 [json_name = "username"];
+  string password = 2 [json_name = "password"];
+}
+
+message AuthorizationResponse {
+  string token = 1 [json_name="token"];
+}

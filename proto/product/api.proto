@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package product;
+
+import "google/api/annotations.proto";
+import "product/message.proto";
+
+option go_package = "github.com/sergejpm/product/pkg/product;product";
+
+service Product {
+  rpc ProductInfo(ProductInfoRequest) returns (ProductInfoResponse) {
+    option (google.api.http) = {
+      get: "/api/v1/product/info"
+    };
+  }
+  rpc Authorize(AuthorizationRequest) returns (AuthorizationResponse) {
+    option (google.api.http) = {
+      post: "/api/v1/user/signin"
+      body: "*"
+    };
+  }
+  rpc Registration(RegistrationRequest) returns (RegistrationResponse) {
+    option (google.api.http) = {
+      post: "/api/v1/user/signup"
+      body: "*"
+    };
+  }
+}
